@@ -1,10 +1,10 @@
-from .bot import Bot
+from core.bot import Bot
 import time
 
 
 class Mage(Bot):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, driver):
+        super().__init__(driver)
 
     def run(self):
         while True:
