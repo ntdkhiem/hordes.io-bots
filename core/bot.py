@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import logging
 
 URL = 'https://hordes.io'
 
@@ -7,6 +8,7 @@ class Bot(ABC):  # Root class
     def __init__(self, driver):
         self.driver = driver
         input("\n[+] Press ENTER when you're login in and on the play screen...")
+        self.logger = logging.getLogger('hordes.io')
         # Get necessary components
         self.components = self.get_components()
 
@@ -15,6 +17,7 @@ class Bot(ABC):  # Root class
         """
         Main loop for the bot
         """
+        self.logger.info('Bot is running')
         print('RUNNING')
         return
 
@@ -23,6 +26,7 @@ class Bot(ABC):  # Root class
         Find and get all components (health bar, mana bar, info)
         :return: Dictionary of components
         """
+        self.logger.info('Getting components...')
         components = {
             'player': {
                 'current_health': self.driver.find_element_by_xpath('//*[@id="ui_player"]/div/'

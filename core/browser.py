@@ -1,6 +1,8 @@
 import pickle
+import logging
 from os.path import isfile
 from selenium import webdriver
+from selenium.common import exceptions
 
 URL = 'https://hordes.io'
 
@@ -10,11 +12,11 @@ class Driver:
     def __init__(self, type: str,
                  # total: int        # total web browser to open
                  ):
+        self.logger = logging.getLogger('hordes.io')
         # self.browser = self.set_web_driver(type)
-        print(f"[+] Setting options for {type}")
+        self.logger.info(f"Setting options for {type}...")
         if type.lower() == "chrome":
             from selenium.webdriver.chrome.options import Options
-
             self.driver = webdriver.Chrome
             # Initialize options:
             self.chrome_options = Options()
@@ -29,17 +31,25 @@ class Driver:
             self.driver = webdriver.Firefox
             # TODO: add options for firefox
         else:
-            print(f"[*] {type} is not supported")
+            self.logger.error(f"{type} is not supported")
             return
 
         # Load cookies if exist
         if isfile("hordes_cookies.pkl"):
+            self.logger.info("Adding cookies to browser...")
             for cookie in pickle.load(open("hordes_cookies.pkl", "rb")):
                 self.driver.add_cookie(cookie)
 
     def start(self):
         # Launch web browser
-        self.driver = self.driver(chrome_options=self.chrome_options)
+        self.logger.info("Starting web browser")
+        # TODO: add firefox's capability
+        # NOTE: for chrome only
+        try:
+            self.driver = self.driver(chrome_options=self.chrome_options)
+        except exceptions.WebDriverException:
+            self.logger.exception('Could not initiate web driver')
+
         self.driver.get(URL)
         return self.driver
 
@@ -48,10 +58,10 @@ class Driver:
         Save cookies from session and destroy driver
         """
         # Save cookies to hordes_cookies.pkl
-        print("[+] Saving cookies...")
+        self.logger.info("Saving cookies...")
         pickle.dump(self.driver.get_cookies(), open("hordes_cookies.pkl", "wb"))
         # quitting
-        print("[+] Quitting driver...")
+        self.logger.info("Quitting driver...")
         self.driver.quit()
 
 
