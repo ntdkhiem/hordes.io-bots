@@ -4,7 +4,7 @@ from core.browser import Driver
 from core.characters import *
 
 __author__ = "TopKeingt"
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 
 def parse_arguments():
@@ -42,24 +42,26 @@ def init_logging():
     stream_handler.setLevel(logging.INFO)
     file_handler.setLevel(logging.ERROR)
     # formatters
-    stream_formatter = logging.Formatter('[%(levelname)s%] %(message)s%')
-    file_formatter = logging.Formatter('[%(asctime)s%][%(filename)s%][%(levelname)s%] %(message)%')
+    stream_formatter = logging.Formatter('[%(levelname)s] %(message)s')
+    file_formatter = logging.Formatter('[%(asctime)s][%(filename)s][%(levelname)s] %(message)s')
 
     stream_handler.setFormatter(stream_formatter)
     file_handler.setFormatter(file_formatter)
 
     logger.addHandler(stream_handler)
     logger.addHandler(file_handler)
+    logger.info('Setting logger...')
 
 
 def main():
     banner()
     args = parse_arguments()
     init_logging()
+    driver = Driver(args.browser).start()
+    bot = mage.Mage(driver).run()
 
 
 if __name__ == "__main__":
-    banner()
-    args = parse_arguments()
-    driver = Driver(args.browser).start()
-    bot = mage.Mage(driver  ).run()
+    main()
+
+

@@ -14,6 +14,9 @@ class Driver:
                  ):
         self.logger = logging.getLogger('hordes.io')
         # self.browser = self.set_web_driver(type)
+        if not type:
+            self.logger.warning('No web browser specify')
+            return
         self.logger.info(f"Setting options for {type}...")
         if type.lower() == "chrome":
             from selenium.webdriver.chrome.options import Options
@@ -49,6 +52,7 @@ class Driver:
             self.driver = self.driver(chrome_options=self.chrome_options)
         except exceptions.WebDriverException:
             self.logger.exception('Could not initiate web driver')
+            return
 
         self.driver.get(URL)
         return self.driver
