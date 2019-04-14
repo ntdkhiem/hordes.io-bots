@@ -1,11 +1,11 @@
 import logging
 """
 Logging levels:
-    - Critical:
-    - Error:
-    - Warning:
-    - Info:
-    - Debug:
+    - Critical: None
+    - Error: Program errors
+    - Warning: Missing requirements
+    - Info: Information of the program
+    - Debug: workflow
 :return: void
 """
 # custom logger

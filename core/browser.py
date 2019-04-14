@@ -1,5 +1,4 @@
 import pickle
-from sys import exit
 from core.setup_logger import logger
 from os.path import isfile
 from selenium import webdriver
@@ -23,42 +22,33 @@ class Driver:
             self.driver = webdriver.Chrome
             # Initialize options:
             self.chrome_options = Options()
-            # Load Web Page with Disk Cache
-            preferences = {'disk-cache-size': 4096}
-            self.chrome_options.add_experimental_option('prefs', preferences)
-            # Additional options
-            self.chrome_options.add_argument('--disable-extensions')
-            self.chrome_options.add_argument("--disable-gpu")
             self.chrome_options.add_argument('--start-maximized')
-        elif type.lower() == "firefox":
-            self.driver = webdriver.Firefox
-            # TODO: add options for firefox
+        # elif type.lower() == "firefox":
+        #     self.driver = webdriver.Firefox
+        #     # TODO: add options for firefox
         else:
             logger.error(f"{type} is not supported")
             return
-
-        # Load cookies if exist
-        if isfile("hordes_cookies.pkl"):
-            logger.info("Adding cookies to browser...")
-            for cookie in pickle.load(open("hordes_cookies.pkl", "rb")):
-                self.driver.add_cookie(cookie)
+        
 
     def start(self):
         # Launch web browser
         logger.info("Starting web browser...")
-        # TODO: add firefox's capability
         # NOTE: for chrome only
         try:
             self.driver = self.driver(chrome_options=self.chrome_options)
         except exceptions.WebDriverException:
             logger.error('Could not initiate web driver...')
             exit(1)
-        except KeyboardInterrupt:
-            logger.warning('Quited...')
-            exit(1)
 
+        # Load cookies if exist
+        if isfile("hordes_cookies.pkl"):
+            self.driver.get('https://www.google.com/')              # redirect to this website before add cookies so that if we direct back to hordes.io then we will logged in.
+            logger.info("Adding cookies to browser...")
+            for cookie in pickle.load(open("hordes_cookies.pkl", "rb")):
+                self.driver.add_cookie(cookie)
         self.driver.get(URL)
-        return self.driver
+        
 
     def quit(self):
         """
@@ -67,9 +57,12 @@ class Driver:
         # Save cookies to hordes_cookies.pkl
         logger.info("Saving cookies...")
         pickle.dump(self.driver.get_cookies(), open("hordes_cookies.pkl", "wb"))
+        # Closing web browser
+        self.driver.close()
         # quitting
         logger.info("Quitting driver...")
         self.driver.quit()
+        exit()
 
 
 
