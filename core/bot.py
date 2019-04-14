@@ -17,6 +17,7 @@ class Bot(ABC):  # Root class
         # Get necessary components
         logger.info('Getting components...')
         self.components = self.get_components()
+        self.action = self.driver.find_element_by_tag_name('body')
 
     def run(self):
         """
@@ -46,12 +47,13 @@ class Bot(ABC):  # Root class
                         # check for player's health status
                         if player_health_status is 'low':
                             # if 'low' then heal up
-                            logger.debug("Player's health is low. Healing up...")
-                            self.heal()
+                            logger.debug("Player's health is low. Defending...")
+                            self.defend()
                             # if 'die' then respawn
                         elif player_health_status is 'die':
                             logger.debug("Player's respawning...")
                             self.respawn()    
+                            input("Please lead me to the griding place and press ENTER...")
                             continue
                             # if 'normal' then continue 
                         else:
@@ -85,6 +87,7 @@ class Bot(ABC):  # Root class
                         if random_move_countdown == 0:
                             logger.debug('Performing random move...')
                             self.random_move()
+                            random_move_countdown = RANDOM_MOVE_COUNT
                         else:
                             random_move_countdown -= 1
                     else:
@@ -112,7 +115,7 @@ class Bot(ABC):  # Root class
         pass
     
     @abstractmethod
-    def heal(self):
+    def defend(self):
         """
         Inheritable heal method for subclass (all characters have different move)
         """
@@ -135,7 +138,7 @@ class Bot(ABC):  # Root class
         """
         Send "TAB" as a shortcut to find enemy 
         """
-        self.driver.find_element_by_tag_name('body').send_keys(Keys.TAB)
+        self.action.send_keys(Keys.TAB)
 
     def enemy_is_attackable(self):
         """
