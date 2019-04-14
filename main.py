@@ -4,7 +4,6 @@ from core.characters import *
 from core.setup_logger import logger
 
 __author__ = "TopKeingt"
-__version__ = "1.0.0"
 
 
 def parse_arguments():

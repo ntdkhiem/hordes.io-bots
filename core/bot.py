@@ -2,7 +2,6 @@ import time
 from abc import ABC, abstractmethod
 from core.setup_logger import logger
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 
 URL = 'https://hordes.io'
 DELAY = 0.1             # bot's lifespan
@@ -136,9 +135,7 @@ class Bot(ABC):  # Root class
         """
         Send "TAB" as a shortcut to find enemy 
         """
-        actions = ActionChains(self.driver)
-        actions = actions.send_keys(Keys.TAB)
-        actions.perform()
+        self.driver.find_element_by_tag_name('body').send_keys(Keys.TAB)
 
     def enemy_is_attackable(self):
         """
