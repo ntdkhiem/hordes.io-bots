@@ -1,7 +1,7 @@
 # [Hordes.io](https://hordes.io) Bots
 Automation bot that help grinding without much help from you.
 
-Features:
+### Features:
 - Attack and defend mode
 - Automatic searching for enemies
 - Random move to avoid bot-like behaviours
