@@ -10,8 +10,10 @@ URL = 'https://hordes.io'
 class Driver:
 
     def __init__(self, type: str,
+                       chromedriver_path: str
                  # total: int        # total web browser to open
                  ):
+        self.path = chromedriver_path
         if not type:
             logger.warning('No web browser specify')
             return
@@ -35,7 +37,11 @@ class Driver:
         logger.info("Starting web browser...")
         # NOTE: for chrome only
         try:
-            self.driver = self.driver(chrome_options=self.chrome_options)
+            if self.path:
+                self.driver = self.driver(self.path, chrome_options=self.chrome_options)
+            else:
+                self.driver = self.driver(chrome_options=self.chrome_options)               # TODO: clean this mess
+
         except exceptions.WebDriverException:
             logger.error('Could not initiate web driver...')
             exit(1)
