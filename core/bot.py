@@ -13,7 +13,7 @@ class Bot(ABC):  # Root class
     def __init__(self, driver_obj):
         self.webdriver = driver_obj
         self.driver = self.webdriver.driver
-        input("[+] Press ENTER when you're login in and on the play screen... ")
+        input("[+] Press ENTER when you're login in and on the play screen (make sure to place me at the grinding spot)... ")
         # Get necessary components
         logger.info('Getting components...')
         self.components = self.get_components()
