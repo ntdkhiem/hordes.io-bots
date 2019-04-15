@@ -96,12 +96,13 @@ class Bot(ABC):  # Root class
                         self.find_enemy()
                         enemy_is_alive = True
 
+                    time.sleep(DELAY)
                     # update status
                     self.components = self.get_components()
                 else:
                     logger.warning('Lost control of the bot...')
                     raise Exception('Could not find neccessary components for bot...')          # TODO: change to specific exception to raise.
-                time.sleep(DELAY)
+                
             except Exception as e:
                 logger.exception(e)
                 logger.warning('Bot is disconnecting...')
@@ -125,6 +126,7 @@ class Bot(ABC):  # Root class
         """
         Random move to avoid potential-like bot
         """
+        # TODO: implement this method
         pass
 
     def rest(self):
@@ -144,9 +146,7 @@ class Bot(ABC):  # Root class
         """
         Confirm if the enemy is close to us that attack moves are reachable.
         """
-        # attack_overlay = self.attack_main_move.value_of_css_property('position')        # if there is an overlay on one of the attack move then we know that its unable to reach the target
-
-        # return True if attack_overlay == 'static' else False
+        # TODO: implement the method
         return True
     
     def check_health(self):
@@ -185,20 +185,6 @@ class Bot(ABC):  # Root class
         """
         respawn_btn = self.driver.find_element_by_xpath('//*[@id="ui_btn_respawn"]')
         respawn_btn.click()
-
-    def get_skills_components(self):
-        components = dict()
-        try:
-            components = {
-                'skill_1': self.driver.find_element_by_xpath('//*[@id="ui_skills"]/div[6]'),
-                'skill_2': self.driver.find_element_by_xpath('//*[@id="ui_skills"]/div[7]'),
-                'skill_3': self.driver.find_element_by_xpath('//*[@id="ui_skills"]/div[8]'),
-                'skill_4': self.driver.find_element_by_xpath('//*[@id="ui_skills"]/div[9]'),
-            }
-        except AttributeError:
-            logger.error('Could not retrieve skills elements...')
-        finally:
-            return components
 
     def get_components(self):
         """

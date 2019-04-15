@@ -12,7 +12,6 @@ class Driver:
     def __init__(self, type: str,
                  # total: int        # total web browser to open
                  ):
-        # self.browser = self.set_web_driver(type)
         if not type:
             logger.warning('No web browser specify')
             return
@@ -47,6 +46,7 @@ class Driver:
             logger.info("Adding cookies to browser...")
             for cookie in pickle.load(open("hordes_cookies.pkl", "rb")):
                 self.driver.add_cookie(cookie)
+
         self.driver.get(URL)
         
 
@@ -63,7 +63,3 @@ class Driver:
         logger.info("Quitting driver...")
         self.driver.quit()
         exit()
-
-
-
-

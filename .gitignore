@@ -108,3 +108,6 @@ venv.bak/
 
 # pickle file
 *.pkl
+
+# vscode
+.vscode/
