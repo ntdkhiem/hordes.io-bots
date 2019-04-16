@@ -10,12 +10,14 @@ class Mage(Bot):
                 "key": 2,
                 "name": "Frostcall",
                 "Cooldown": 7,
+                "Duration": 4,
                 "MPCost": 22.4
             },
             "2": {
                 "key": 1,
                 "name": "Ice Bolt",
                 "Cooldown": 0,
+                "Duration": 1,
                 "MPCost": 5.6
             }
         },
@@ -24,12 +26,14 @@ class Mage(Bot):
                 "key": 4,
                 "name": "Iceblock",
                 "Cooldown": 18,
+                "Duration": 4,
                 "MPCost": 33.6
             },
             "2": {
                 "key": 3,
                 "name": "Teleport",
                 "Cooldown": 9,
+                "Duration": 1,
                 "MPCost": 22.4
             }
         }
@@ -51,10 +55,13 @@ class Mage(Bot):
             self.action.send_keys(self.attack_1.get("key"))
             self.attack_countdown = time.time()
             logger.debug("Wait for attacking skill to finish...")
-            time.sleep(4)                   # The duration of the skill is 4 seconds so we wait for it to finish
+            time.sleep(self.attack_1.get("Duration"))                   # Wait for the skill's to finish
         else:
             # self.attack_2     Run
             self.action.send_keys(self.attack_2.get("key"))
+            logger.debug("Wait for attacking skill to finish...")
+            time.sleep(self.attack_2.get("Duration"))                   # Wait for the skill's to finish
+            
     
     def defend(self):
         if time.time() - self.defend_1_countdown > self.defend_1.get("Cooldown"):
@@ -62,9 +69,11 @@ class Mage(Bot):
             self.action.send_keys(self.defend_1.get("key"))
             self.defend_1_countdown = time.time()
             logger.debug("Wait for defending skill to finish...")
-            time.sleep(5)                   # The duration of the skill is 5 seconds so we wait for it to finish
+            time.sleep(self.defend_1.get("Duration"))                   # Wait for the skill's to finish
         else:
-            # self.defend_2 (if exist)     Run
+            # self.defend_2     Run
             if time.time() - self.defend_2_countdown > self.defend_2.get("Cooldown"):
                 self.action.send_keys(self.defend_2.get("key"))
                 self.defend_2_countdown = time.time()
+                logger.debug("Wait for defending skill to finish...")
+                time.sleep(self.defend_2.get("Duration"))                   # Wait for the skill's to finish

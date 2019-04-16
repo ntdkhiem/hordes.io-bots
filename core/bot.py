@@ -26,24 +26,20 @@ class Bot(ABC):  # Root class
         logger.info('Bot is running...')
         enemy_is_alive = False
         random_move_countdown = RANDOM_MOVE_COUNT
+         
         while True:
             try:
                 if self.components:
                     print(self.components)
+                    self.player = self.components.get('player')
+                    self.enemy = self.components.get('target')
                     logger.debug("Checking player's health...")
                     player_health_status = self.check_health()
                     logger.debug("Checking player' mana...")
                     player_mana_status = self.check_mana()
-                    enemy = self.components.get('target')
 
-                    logger.debug("Checking for reachable target...")
-                    if not self.enemy_is_attackable():
-                        logger.debug("Unable to reach the target. Retrying...")
-                        enemy_is_alive = False
-                    else:
-                        logger.debug("Target is reachable...")
-
-                    if enemy_is_alive and enemy.get('is_alive'):
+                    if enemy_is_alive and self.enemy.get('is_alive'):
+                        enemy_previous_health = self.check_enemy_health()
                         # check for player's health status
                         if player_health_status is 'low':
                             # if 'low' then heal up
@@ -70,9 +66,9 @@ class Bot(ABC):  # Root class
 
                         # check for enemy's health status
                         logger.debug("Checking enemy's health...")
-                        enemy_health_status = self.check_enemy_health()
-                        if enemy_health_status is 'die':
-                            # if 'die' then toggle enemy_is_alive to false
+                        if enemy_previous_health is 'die':
+                            # if 'die' then find another enemy
+                            logger.debug("Enemy died...")
                             enemy_is_alive = False
                             continue
                             # if 'alive' then continue
@@ -81,7 +77,18 @@ class Bot(ABC):  # Root class
 
                         # attack the enemy
                         logger.debug("Attacking the target...")
-                        self.attack()                                   # TODO: delay to x seconds for cooldown
+                        self.attack()   
+
+                        logger.debug("Checking if the attack reached the target...")
+                        enemy_current_health = self.check_enemy_health()                # Recheck if the enemy's health actually going down
+                        if enemy_current_health == enemy_previous_health:               # if could not damage the target then immediately find another enemy
+                                logger.debug("Player could not damage the enemy...")
+                                enemy_is_alive = False
+                                continue
+                        elif enemy_previous_health is 'die':
+                            logger.debug("Enemy died...")
+                            enemy_is_alive = False 
+                        # Attack reached the target 
 
                         # Randomly move
                         if random_move_countdown == 0:
@@ -96,6 +103,7 @@ class Bot(ABC):  # Root class
                         self.find_enemy()
                         enemy_is_alive = True
 
+                    # Everything goes smoothly
                     time.sleep(DELAY)
                     # update status
                     self.components = self.get_components()
@@ -141,21 +149,13 @@ class Bot(ABC):  # Root class
         Send "TAB" as a shortcut to find enemy 
         """
         self.action.send_keys(Keys.TAB)
-
-    def enemy_is_attackable(self):
-        """
-        Confirm if the enemy is close to us that attack moves are reachable.
-        """
-        # TODO: implement the method
-        return True
     
     def check_health(self):
         """
         Check player's health. If player's health is less than half of max_health then return 'low' or 'die' if died else 'normal'  
         """
-        player = self.components.get('player')
-        current_health = int(player.get('current_health'))
-        max_health = int(player.get('max_health'))
+        current_health = int(self.player.get('current_health'))
+        max_health = int(self.player.get('max_health'))
         if current_health == 0:
             return 'die'
         
@@ -165,19 +165,17 @@ class Bot(ABC):  # Root class
         """
         Check player's mana. If player's mana is less than or equal MANA_LIMIT then return 'low' else 'normal'
         """
-        player = self.components.get('player')
-        current_mana = int(player.get('current_mana'))
+        current_mana = int(self.player.get('current_mana'))
         
         return 'low' if current_mana <= LOW_MANA_LIMIT else 'normal'
     
     def check_enemy_health(self):
         """
-        Check enemy's health. If enemy died return 'die' else 'alive'
+        Check enemy's health. If enemy died return 'die' else return its current health
         """
-        enemy = self.components.get('target')
-        current_health = int(enemy.get('current_health'))
+        current_health = int(self.enemy.get('current_health'))
 
-        return 'die' if current_health == 0 else 'alive'
+        return 'die' if current_health == 0 else current_health
 
     def respawn(self):
         """
@@ -205,7 +203,9 @@ class Bot(ABC):  # Root class
                 'target': {
                     'is_alive': self.driver.find_element_by_xpath('//*[@id="ui_target"]').is_displayed(),
                     'current_health': self.driver.find_element_by_xpath('//*[@id="ui_target"]/div/'
-                                                                        'div[1]/div[2]/span[1]').text
+                                                                        'div[1]/div[2]/span[1]').text,
+                    'max_health': self.driver.find_element_by_xpath('//*[@id="ui_target"]/div/'
+                                                                      'div[1]/div[2]/span[2]').text,
                 }
             }
         except AttributeError:
