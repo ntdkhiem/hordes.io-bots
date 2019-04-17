@@ -12,14 +12,13 @@ Automation bot that help grinding without much help from you.
 
 ### Prerequisites
 - Python 3.x
-- Pipenv    `python -m pip install pipenv`
 - If you use:
     - Chrome: [install chromedriver.exe](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver#quick-installation)
 
 ### Installation
 1) Install requirements
 ```
-    python -m pipenv install
+    python -m pip install -r requirements.txt
 ```
 
 ### Notes Before Running
@@ -35,7 +34,7 @@ The bot is still in beta mode so it needs your help everytime these below proble
 ### Running
 1) Enter pipenv's shell and run
 ```
-    pipenv shell && python main.py
+    python main.py
 ```
 
 ### Todo:
