@@ -25,6 +25,7 @@ class Bot(ABC):  # Root class
         """
         logger.info('Bot is running...')
         enemy_is_alive = False
+        enemy_previous_health = -1                 # to check if the enemy actually get damaged
         random_move_countdown = RANDOM_MOVE_COUNT
          
         while True:
@@ -39,7 +40,6 @@ class Bot(ABC):  # Root class
                     player_mana_status = self.check_mana()
 
                     if enemy_is_alive and self.enemy.get('is_alive'):
-                        enemy_previous_health = self.check_enemy_health()
                         # check for player's health status
                         if player_health_status is 'low':
                             # if 'low' then heal up
@@ -66,29 +66,27 @@ class Bot(ABC):  # Root class
 
                         # check for enemy's health status
                         logger.debug("Checking enemy's health...")
-                        if enemy_previous_health is 'die':
+                        enemy_health_status = self.check_enemy_health()
+                        if enemy_health_status is 'die':
                             # if 'die' then find another enemy
                             logger.debug("Enemy died...")
                             enemy_is_alive = False
+                            enemy_previous_health = -1
                             continue
                             # if 'alive' then continue
                         else:
                             logger.debug("Enemy is still alive...")
+                            if enemy_previous_health == enemy_health_status:                # Checking if the attack could damage the target
+                                logger.debug("Player could not damage the enemy. Find another one...")
+                                enemy_is_alive = False
+                                enemy_previous_health = -1
+                                continue
+                            enemy_previous_health = enemy_health_status
+                        # Attack reached the target 
 
                         # attack the enemy
                         logger.debug("Attacking the target...")
                         self.attack()   
-
-                        logger.debug("Checking if the attack reached the target...")
-                        enemy_current_health = self.check_enemy_health()                # Recheck if the enemy's health actually going down
-                        if enemy_current_health == enemy_previous_health:               # if could not damage the target then immediately find another enemy
-                                logger.debug("Player could not damage the enemy...")
-                                enemy_is_alive = False
-                                continue
-                        elif enemy_previous_health is 'die':
-                            logger.debug("Enemy died...")
-                            enemy_is_alive = False 
-                        # Attack reached the target 
 
                         # Randomly move
                         if random_move_countdown == 0:
