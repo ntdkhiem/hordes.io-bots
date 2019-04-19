@@ -49,7 +49,7 @@ class Bot(ABC):  # Root class
                         elif player_health_status is 'die':
                             logger.debug("Player's respawning...")
                             self.respawn()    
-                            input("Please lead me to the griding place and press ENTER...")
+                            input("Please lead me to the griding location and press ENTER...")
                             continue
                             # if 'normal' then continue 
                         else:
