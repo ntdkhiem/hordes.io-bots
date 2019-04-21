@@ -13,6 +13,7 @@ class Bot(ABC):  # Root class
     def __init__(self, driver_obj):
         self.webdriver = driver_obj
         self.driver = self.webdriver.driver
+        self.driver.execute_script("alert('Please press Enter in the terminal when logged in and on the play screen');")
         input("[+] Press ENTER when you're login in and on the play screen (make sure to place me at the grinding spot)... ")
         # Get necessary components
         logger.info('Getting components...')
@@ -43,11 +44,12 @@ class Bot(ABC):  # Root class
                         # check for player's health status
                         if player_health_status is 'low':
                             # if 'low' then heal up
-                            logger.debug("Player's health is low. Defending...")
+                            logger.info("Player's health is low. Defending...")
                             self.defend()
                             # if 'die' then respawn
                         elif player_health_status is 'die':
-                            logger.debug("Player's respawning...")
+                            logger.info("Player's died. Respawning...")
+                            self.driver.execute_script("alert('Player died...');")
                             self.respawn()    
                             input("Please lead me to the griding location and press ENTER...")
                             continue
@@ -58,7 +60,7 @@ class Bot(ABC):  # Root class
                         # check for player's mana status
                         if player_mana_status is 'low':
                             # if 'low' then rest
-                            logger.debug(f"Player's mana is low. Resting...")
+                            logger.info(f"Player's mana is low. Resting...")
                             self.rest()
                             # if 'normal' then continue
                         else:
@@ -77,7 +79,7 @@ class Bot(ABC):  # Root class
                         else:
                             logger.debug("Enemy is still alive...")
                             if enemy_previous_health == enemy_health_status:                # Checking if the attack could damage the target
-                                logger.debug("Player could not damage the enemy. Find another one...")
+                                logger.info("Player could not damage the enemy. Find another one...")
                                 enemy_is_alive = False
                                 enemy_previous_health = -1
                                 continue
@@ -139,6 +141,7 @@ class Bot(ABC):  # Root class
         """
         Resting for 2 seconds
         """
+        # TODO: Improve on this method
         rest_time = 2
         time.sleep(rest_time)
     
@@ -171,7 +174,11 @@ class Bot(ABC):  # Root class
         """
         Check enemy's health. If enemy died return 'die' else return its current health
         """
-        current_health = int(self.enemy.get('current_health'))
+        current_health = self.enemy.get('current_health')
+        if current_health:
+            current_health = int(current_health)
+        else:
+            current_health = 0
 
         return 'die' if current_health == 0 else current_health
 
@@ -202,8 +209,6 @@ class Bot(ABC):  # Root class
                     'is_alive': self.driver.find_element_by_xpath('//*[@id="ui_target"]').is_displayed(),
                     'current_health': self.driver.find_element_by_xpath('//*[@id="ui_target"]/div/'
                                                                         'div[1]/div[2]/span[1]').text,
-                    'max_health': self.driver.find_element_by_xpath('//*[@id="ui_target"]/div/'
-                                                                      'div[1]/div[2]/span[2]').text,
                 }
             }
         except AttributeError:
