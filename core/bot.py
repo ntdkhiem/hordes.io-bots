@@ -49,7 +49,8 @@ class Bot(ABC):  # Root class
                             # if 'die' then respawn
                         elif player_health_status is 'die':
                             logger.info("Player's died. Respawning...")
-                            self.driver.execute_script("alert('Player died...');")
+                            self.driver.execute_script("alert('Player died. Please press Enter in the terminal to continue...');")
+                            input("Player died. Please press Enter to respawn")
                             self.respawn()    
                             input("Please lead me to the griding location and press ENTER...")
                             continue
@@ -145,6 +146,26 @@ class Bot(ABC):  # Root class
         rest_time = 2
         time.sleep(rest_time)
     
+    def cast(self, skill):
+        """
+        Casting a skill        
+        """
+        logger.debug("Wait for skill to finish...")
+        self.action.send_keys(skill.get("key"))
+        time.sleep(skill.get("duration"))
+
+    def get_cooldown_elapsed(self, initial_cooldown: int = time.time()):
+        """
+        The elapsed time between current time and initial cooldown time
+        """
+        return time.time() - initial_cooldown
+
+    def set_time(self):
+        """
+        Return current time (don't know if I should keep this cuz then I only need to 'import time' here)
+        """
+        return time.time()
+
     def find_enemy(self):
         """
         Send "TAB" as a shortcut to find enemy 
