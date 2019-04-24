@@ -1,6 +1,8 @@
 # <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io) Bots
 Automation bot that help grinding without much help from you.
 
+[![Video Demonstration](https://img.youtube.com/vi/5SRLBGi1Lcs/0.jpg)](https://youtu.be/5SRLBGi1Lcs)
+
 ### Features:
 - Attack and defend mode
 - Automatic searching for enemies
