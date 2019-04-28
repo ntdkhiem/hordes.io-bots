@@ -1,4 +1,4 @@
-# <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io) Bots
+# <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io) Bots [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e506058e814499cb263b3e76f8868f4)](https://www.codacy.com/app/TopKeingt/hordes.io-bots?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TopKeingt/hordes.io-bots&amp;utm_campaign=Badge_Grade)
 Automation bot that help grinding without much help from you.
 
 ### Demonstration
