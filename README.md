@@ -2,6 +2,7 @@
 Automation bot that help grinding without much help from you.
 
 ### Demonstration
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f7a19f2b318b4243ba1aab240ac652da)](https://app.codacy.com/app/TopKeingt/hordes.io-bots?utm_source=github.com&utm_medium=referral&utm_content=TopKeingt/hordes.io-bots&utm_campaign=Badge_Grade_Dashboard)
 [![Video Demonstration](https://img.youtube.com/vi/xRAFMiTzsn0/0.jpg)](https://youtu.be/xRAFMiTzsn0)
 
 ### Features:
