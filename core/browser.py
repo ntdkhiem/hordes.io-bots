@@ -53,7 +53,7 @@ class Driver:
                 self.driver.add_cookie(cookie)
 
         self.driver.get(URL)
-        
+
     def quit(self):
         """
         Save cookies from session and destroy driver

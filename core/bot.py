@@ -191,7 +191,7 @@ class Bot(ABC):  # Root class
         Check player's mana. If player's mana is less than or equal MANA_LIMIT then return 'low' else 'normal'
         """
         current_mana = int(self.player.get('current_mana'))
-        
+
         return 'low' if current_mana <= LOW_MANA_LIMIT else 'normal'
 
     def check_enemy_health(self):
@@ -237,6 +237,8 @@ class Bot(ABC):  # Root class
             }
         except AttributeError:
             logger.error('Could not retrieve necessary components...')
+
+        return components
 
     def quit(self):
         self.webdriver.quit()

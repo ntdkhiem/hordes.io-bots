@@ -1,6 +1,4 @@
 from core.bot import Bot
-from core.setup_logger import logger
-
 
 class Mage(Bot):
     _skills = {
@@ -68,4 +66,3 @@ class Mage(Bot):
                 if self.get_cooldown_elapsed(self.defend_2_countdown) > self.defend_2.get("cooldown"):
                     self.cast(self.defend_2)
                     self.defend_2_countdown = self.set_time()
-                    
