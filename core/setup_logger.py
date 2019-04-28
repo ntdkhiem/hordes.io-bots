@@ -1,17 +1,18 @@
 import logging
-"""
-Logging levels:
-    - Critical: None
-    - Error: Program errors
-    - Warning: Missing requirements
-    - Info: Information of the program
-    - Debug: workflow
-:return: void
-"""
+
 # custom logger
 logger = logging.getLogger('hordes.io')
 
 def logger_init(debug: bool = False):
+    """
+    Logging levels:
+        - Critical: None
+        - Error: Program errors
+        - Warning: Missing requirements
+        - Info: Information of the program
+        - Debug: workflow
+    :return: void
+    """
     global logger
     if debug:
         level = logging.DEBUG

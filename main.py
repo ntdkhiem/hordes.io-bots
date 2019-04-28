@@ -51,7 +51,7 @@ def main():
     logger_init(args.verbose)
     driver = Driver(args.browser, args.path)
     driver.start()
-    bot = player(driver).run()
+    player(driver).run()
 
 if __name__ == "__main__":
     main()

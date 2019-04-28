@@ -6,7 +6,6 @@ from selenium.common import exceptions
 
 URL = 'https://hordes.io'
 
-
 class Driver:
 
     def __init__(self, type: str,
@@ -55,7 +54,6 @@ class Driver:
 
         self.driver.get(URL)
         
-
     def quit(self):
         """
         Save cookies from session and destroy driver

@@ -51,10 +51,10 @@ class Bot(ABC):  # Root class
                             logger.info("Player's died. Respawning...")
                             self.driver.execute_script("alert('Player died. Please press Enter in the terminal to continue...');")
                             input("Player died. Please press Enter to respawn")
-                            self.respawn()    
+                            self.respawn()
                             input("Please lead me to the griding location and press ENTER...")
                             continue
-                            # if 'normal' then continue 
+                            # if 'normal' then continue
                         else:
                             logger.debug("Player's health is normal...")
                         
@@ -85,11 +85,11 @@ class Bot(ABC):  # Root class
                                 enemy_previous_health = -1
                                 continue
                             enemy_previous_health = enemy_health_status
-                        # Attack reached the target 
+                        # Attack reached the target
 
                         # attack the enemy
                         logger.debug("Attacking the target...")
-                        self.attack()   
+                        self.attack()
 
                         # Randomly move
                         if random_move_countdown == 0:
@@ -118,7 +118,7 @@ class Bot(ABC):  # Root class
                 self.quit()
 
     @abstractmethod
-    def attack(self): 
+    def attack(self):
         """
         Inheritable attacking method for subclass (all characters have different move)
         """
@@ -138,6 +138,7 @@ class Bot(ABC):  # Root class
         # TODO: implement this method
         pass
 
+    @classmethod
     def rest(self):
         """
         Resting for 2 seconds
@@ -148,18 +149,20 @@ class Bot(ABC):  # Root class
     
     def cast(self, skill):
         """
-        Casting a skill        
+        Casting a skill
         """
         logger.debug("Wait for skill to finish...")
         self.action.send_keys(skill.get("key"))
         time.sleep(skill.get("duration"))
 
+    @classmethod
     def get_cooldown_elapsed(self, initial_cooldown: int = time.time()):
         """
         The elapsed time between current time and initial cooldown time
         """
         return time.time() - initial_cooldown
 
+    @classmethod
     def set_time(self):
         """
         Return current time (don't know if I should keep this cuz then I only need to 'import time' here)
@@ -168,20 +171,20 @@ class Bot(ABC):  # Root class
 
     def find_enemy(self):
         """
-        Send "TAB" as a shortcut to find enemy 
+        Send "TAB" as a shortcut to find enemy
         """
         self.action.send_keys(Keys.TAB)
     
     def check_health(self):
         """
-        Check player's health. If player's health is less than half of max_health then return 'low' or 'die' if died else 'normal'  
+        Check player's health. If player's health is less than half of max_health then return 'low' or 'die' if died else 'normal'
         """
         current_health = int(self.player.get('current_health'))
         max_health = int(self.player.get('max_health'))
         if current_health == 0:
             return 'die'
         
-        return 'low' if current_health < max_health // 2 else 'normal' 
+        return 'low' if current_health < max_health // 2 else 'normal'
     
     def check_mana(self):
         """
@@ -190,7 +193,7 @@ class Bot(ABC):  # Root class
         current_mana = int(self.player.get('current_mana'))
         
         return 'low' if current_mana <= LOW_MANA_LIMIT else 'normal'
-    
+
     def check_enemy_health(self):
         """
         Check enemy's health. If enemy died return 'die' else return its current health
@@ -205,7 +208,7 @@ class Bot(ABC):  # Root class
 
     def respawn(self):
         """
-        Click respawn button 
+        Click respawn button
         """
         respawn_btn = self.driver.find_element_by_xpath('//*[@id="ui_btn_respawn"]')
         respawn_btn.click()
@@ -234,8 +237,6 @@ class Bot(ABC):  # Root class
             }
         except AttributeError:
             logger.error('Could not retrieve necessary components...')
-        finally:
-            return components
 
     def quit(self):
         self.webdriver.quit()
