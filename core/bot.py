@@ -139,7 +139,7 @@ class Bot(ABC):  # Root class
         pass
 
     @classmethod
-    def rest(self):
+    def rest(cls):
         """
         Resting for 2 seconds
         """
@@ -156,14 +156,14 @@ class Bot(ABC):  # Root class
         time.sleep(skill.get("duration"))
 
     @classmethod
-    def get_cooldown_elapsed(self, initial_cooldown: int = time.time()):
+    def get_cooldown_elapsed(cls, initial_cooldown: int = time.time()):
         """
         The elapsed time between current time and initial cooldown time
         """
         return time.time() - initial_cooldown
 
     @classmethod
-    def set_time(self):
+    def set_time(cls):
         """
         Return current time (don't know if I should keep this cuz then I only need to 'import time' here)
         """
@@ -185,7 +185,7 @@ class Bot(ABC):  # Root class
             return 'die'
         
         return 'low' if current_health < max_health // 2 else 'normal'
-    
+
     def check_mana(self):
         """
         Check player's mana. If player's mana is less than or equal MANA_LIMIT then return 'low' else 'normal'
