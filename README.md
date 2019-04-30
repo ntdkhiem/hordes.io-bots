@@ -1,4 +1,4 @@
-# <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io) Bots [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e506058e814499cb263b3e76f8868f4)](https://www.codacy.com/app/TopKeingt/hordes.io-bots?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TopKeingt/hordes.io-bots&amp;utm_campaign=Badge_Grade)
+# <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io) Bots [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e506058e814499cb263b3e76f8868f4)](https://www.codacy.com/app/TopKeingt/hordes.io-bots?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TopKeingt/hordes.io-bots&amp;utm_campaign=Badge_Grade)[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)![License MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
 Automation bot that help grinding without much help from you.
 
 ### Demonstration
@@ -60,5 +60,8 @@ The bot is still in beta mode so it needs your help everytime these below proble
 - Users will responsible for using this program with evil purposes.
 - I am not responsible for your actions. :) 
 
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 
-Pull requests are welcome
+Pull requests are welcome                   
+
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
