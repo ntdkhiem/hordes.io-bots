@@ -1,4 +1,5 @@
 import argparse
+import enum
 from core.browser import Driver
 from core.characters import *
 from core.setup_logger import logger_init
@@ -6,24 +7,30 @@ from core.setup_logger import logger_init
 __author__ = "TopKeingt"
 
 
+class Character(enum.Enum):
+    ARCHER = archer.Archer, 0
+    MAGE = mage.Mage, 1
+    SHAMAN = shaman.Shaman, 2
+    WARRIOR = warrior.Warrior, 3
+
+
 def choose_character():
-    characters = [
-        archer.Archer,
-        mage.Mage,
-        shaman.Shaman,
-        warrior.Warrior,
-    ]
     print('''
-    1) Archer (not yet implement)
-    2) Mage 
-    3) Shaman (not yet implement)
-    4) Warrior (not yet implement)
-    ''')
+    1) {} (not yet implement)
+    2) {} 
+    3) {} (not yet implement)
+    4) {} (not yet implement)
+    '''.format(*[c.name for c in Character]))
+
     _id = int(input("Choose your character (number only): "))
-    if _id < len(characters):
-        return characters[_id - 1]
-    else:
-        choose_character()
+
+    for _class in Character:
+        if _class.value[1] == (_id - 1):
+            print(_class)
+            return _class.value[0]
+
+    print("Please choose again...")
+    choose_character()
 
 
 def parse_arguments():
