@@ -29,7 +29,6 @@ class Driver:
         else:
             logger.error(f"{type} is not supported")
             return
-        
 
     def start(self):
         # Launch web browser
