@@ -49,7 +49,6 @@ class Mage(Bot):
     def attack(self):
             if self.get_cooldown_elapsed(self.attack_1_countdown) > self.attack_1.get("cooldown"):
                 # self.attack_1     Run
-                print("Attacking the enemy")
                 self.cast(self.attack_1)
                 self.attack_1_countdown = self.set_time()
             else:
