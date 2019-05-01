@@ -6,7 +6,6 @@ from selenium.webdriver.common.keys import Keys
 URL = 'https://hordes.io'
 DELAY = 0.1             # bot's lifespan
 LOW_MANA_LIMIT = 30
-RANDOM_MOVE_COUNT = 5       # After x loops then randomly move to avoid bot-like behaviour
 
 
 class Bot(ABC):  # Root class
@@ -27,7 +26,6 @@ class Bot(ABC):  # Root class
         logger.info('Bot is running...')
         enemy_is_alive = False
         enemy_previous_health = -1                 # to check if the enemy actually get damaged
-        random_move_countdown = RANDOM_MOVE_COUNT
          
         while True:
             try:
@@ -53,6 +51,7 @@ class Bot(ABC):  # Root class
                             input("Player died. Please press Enter to respawn")
                             self.respawn()
                             input("Please lead me to the griding location and press ENTER...")
+                            self.components = self.get_components()
                             continue
                             # if 'normal' then continue
                         else:
@@ -90,14 +89,6 @@ class Bot(ABC):  # Root class
                         # attack the enemy
                         logger.debug("Attacking the target...")
                         self.attack()
-
-                        # Randomly move
-                        if random_move_countdown == 0:
-                            logger.debug('Performing random move...')
-                            self.random_move()
-                            random_move_countdown = RANDOM_MOVE_COUNT
-                        else:
-                            random_move_countdown -= 1
                     else:
                         # update enemy's status
                         logger.debug("Finding another enemy...")
@@ -130,20 +121,13 @@ class Bot(ABC):  # Root class
         Inheritable heal method for subclass (all characters have different move)
         """
         pass
-    
-    def random_move(self):
-        """
-        Random move to avoid potential-like bot
-        """
-        # TODO: implement this method
-        pass
 
     @classmethod
     def rest(cls):
         """
         Resting for 2 seconds
         """
-        # TODO: Improve on this method
+        # TODO: Improve on this method  /  If the bot rest during an attack - it might get kill
         rest_time = 2
         time.sleep(rest_time)
     
