@@ -16,17 +16,16 @@ class Character(enum.Enum):
 
 def choose_character():
     print('''
-    1) {} (not yet implement)
-    2) {} 
-    3) {} (not yet implement)
-    4) {} (not yet implement)
-    '''.format(*[c.name for c in Character]))
+    1) {0}
+    2) {1} 
+    3) {2} (not yet implement)
+    4) {3} (not yet implement)
+    '''.format(*[c.name for c in Character]))       # ID go according to character's enum
 
     _id = int(input("Choose your character (number only): "))
 
     for _class in Character:
         if _class.value[1] == (_id - 1):
-            print(_class)
             return _class.value[0]
 
     print("Please choose again...")

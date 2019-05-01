@@ -47,7 +47,7 @@ The bot is still in beta mode so it needs your help everytime these below proble
 ```
 
 ### Available Characters
-- [ ] ![archer](https://hordes.io/data/class/class_archer.png)  __Archer__
+- [X] ![archer](https://hordes.io/data/class/class_archer.png)  __Archer__
 - [X] ![mage](https://hordes.io/data/class/class_mage.png)  __Mage__
 - [ ] ![shaman](https://hordes.io/data/class/class_shaman.png)  __Shaman__
 - [ ] ![warrior](https://hordes.io/data/class/class_warrior.png)  __Warrior__
