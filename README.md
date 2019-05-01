@@ -59,10 +59,10 @@ The bot is still in beta mode so it needs your help everytime these below proble
 
 ### Available Characters
 
-- [x] ![archer](https://hordes.io/data/class/class_archer.png) **Archer** (can move around)
-- [x] ![mage](https://hordes.io/data/class/class_mage.png) **Mage** (can stay at one location)
-- [ ] ![shaman](https://hordes.io/data/class/class_shaman.png) **Shaman**
-- [ ] ![warrior](https://hordes.io/data/class/class_warrior.png) **Warrior**
+- [x] ![archer](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_archer.png) **Archer** (can move around)
+- [x] ![mage](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_mage.png) **Mage** (can stay at one location)
+- [ ] ![shaman](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_shaman.png) **Shaman**
+- [ ] ![warrior](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_warrior.png) **Warrior**
 
 ### Todo:
 
