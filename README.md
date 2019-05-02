@@ -13,14 +13,21 @@ Automation bot that help grinding without much help from you.
 - Random move to avoid bot-like behaviours
 - Automatic search for another enemy when done killed the previous enemy
 - Save web browser's cookies when done
-- Mage supported (more characters coming soon)
 - Helpful debugging messages
+
+### Available Characters
+
+- [x] ![archer](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_archer.png) **Archer** (can move around)
+- [x] ![mage](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_mage.png) **Mage** (must stay at one location)
+- [x] ![shaman](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_shaman.png) **Shaman** (must stay at one location)
+- [ ] ![warrior](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_warrior.png) **Warrior**
 
 ### Prerequisites
 
 - Python 3.x
 - If you use:
   - Chrome: [install chromedriver.exe](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver#quick-installation)
+  - Firefox: Coming soon...
 
 ### Installation
 
@@ -57,12 +64,11 @@ The bot is still in beta mode so it needs your help everytime these below proble
     python main.py
 ```
 
-### Available Characters
+Use the command below to turn on debug mode:
 
-- [x] ![archer](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_archer.png) **Archer** (can move around)
-- [x] ![mage](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_mage.png) **Mage** (can stay at one location)
-- [ ] ![shaman](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_shaman.png) **Shaman**
-- [ ] ![warrior](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_warrior.png) **Warrior**
+```
+    python main.py -v
+```
 
 ### Todo:
 
