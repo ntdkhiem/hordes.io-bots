@@ -17,8 +17,8 @@ class Character(enum.Enum):
 def choose_character():
     print('''
     1) {0}
-    2) {1} 
-    3) {2} (not yet implement)
+    2) {1}
+    3) {2}
     4) {3} (not yet implement)
     '''.format(*[c.name for c in Character]))       # ID go according to character's enum
 
