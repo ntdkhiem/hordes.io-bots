@@ -24,7 +24,7 @@ Automation bot that help grinding without much help from you.
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.6+
 - If you use:
   - Chrome: [install chromedriver.exe](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver#quick-installation)
   - Firefox: Coming soon...
@@ -40,7 +40,19 @@ Automation bot that help grinding without much help from you.
 ### Notes Before Running
 
 1. Make sure to add chromedriver.exe in environment PATH
-2. If you don't want to then specify chromedriver.exe's location before running: `python main.py --path=/path/to/chromedriver.exe`
+2. If you don't want to add chromedriver to environment PATH then specify chromedriver.exe's location before running: `python main.py --path=/path/to/chromedriver.exe`
+
+### Running
+
+```
+    python main.py
+```
+
+Use the command below to turn on **debug** mode:
+
+```
+    python main.py -v
+```
 
 ### Notes While Running
 
@@ -57,18 +69,6 @@ The bot is still in beta mode so it needs your help everytime these below proble
 - The bot can **find different enemy** if it's attack skills could not reach or damage the current enemy.
 - The bot can **rest** for few seconds when its mana goes low.
 - The bot can **automatically respawn** under the acceptance of the user.
-
-### Running
-
-```
-    python main.py
-```
-
-Use the command below to turn on debug mode:
-
-```
-    python main.py -v
-```
 
 ### Todo:
 
