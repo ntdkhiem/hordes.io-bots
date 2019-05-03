@@ -56,7 +56,7 @@ Use the command below to turn on **debug** mode:
 
 ### Notes While Running
 
-The bot is still in beta mode so it needs your help everytime these below problems occur.
+The bot might needs your help when these below problems occur.
 
 1. The bot sometime will try to attack far away enemies while ignore closer enemies.
 2. There is a bug in the game that let the skill's execution time goes negative value and I try to take this into consideration. (don't worry, for the time being, the bot will reset itself if this happen.)
