@@ -14,7 +14,7 @@ class Shaman(Bot):
                 "key": 2,
                 "name": "Equilibrate",
                 "cooldown": 0,
-                "duration": 1,
+                "duration": 0,
             }
         },
         "defend": {
