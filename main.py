@@ -19,7 +19,7 @@ def choose_character():
     1) {0}
     2) {1}
     3) {2}
-    4) {3} (not yet implement)
+    4) {3}
     '''.format(*[c.name for c in Character]))       # ID go according to character's enum
 
     _id = int(input("Choose your character (number only): "))

@@ -20,7 +20,7 @@ Automation bot that help grinding without much help from you.
 - [x] ![archer](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_archer.png) **Archer** (can move around)
 - [x] ![mage](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_mage.png) **Mage** (must stay at one location)
 - [x] ![shaman](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_shaman.png) **Shaman** (must stay at one location)
-- [ ] ![warrior](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_warrior.png) **Warrior**
+- [x] ![warrior](https://github.com/TopKeingt/hordes.io-bots/blob/master/images/class_warrior.png) **Warrior** (recommend to move around)
 
 ### Prerequisites
 
@@ -80,7 +80,7 @@ Use the command below to turn on debug mode:
 - Users will responsible for using this program with evil purposes.
 - I am not responsible for your actions. :)
 
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/TopKeingt/)
 
 Pull requests are welcome
 
