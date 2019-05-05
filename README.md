@@ -1,4 +1,4 @@
-# <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io) Bots [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e506058e814499cb263b3e76f8868f4)](https://www.codacy.com/app/TopKeingt/hordes.io-bots?utm_source=github.com&utm_medium=referral&utm_content=TopKeingt/hordes.io-bots&utm_campaign=Badge_Grade)[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)![License MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
+# <img src="https://hordes.io/data/icons/hordes-icon.svg" alt="hordes.io icon" width="30" height="30">[Hordes.io](https://hordes.io)  Bots [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)![License MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 Automation bot that help grinding without much help from you.
 
