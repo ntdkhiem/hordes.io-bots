@@ -135,8 +135,9 @@ class Bot(ABC):  # Root class
         """
         Casting a skill
         """
-        logger.debug("Wait for skill to finish...")
+        logger.info(f"Casting {skill.name}")
         self.action.send_keys(skill.get("key"))
+        logger.debug("Wait for skill to finish...")
         time.sleep(skill.get("duration"))
 
     @classmethod
