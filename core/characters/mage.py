@@ -40,8 +40,8 @@ class Mage(Bot):
         self.attack_1_countdown = self.attack_1.get("cooldown")
         self.defend_1_countdown = self.defend_1.get("cooldown")
         self.defend_2_countdown = self.defend_2.get("cooldown")
-        
-    
+
+
     def attack(self):
             if self.get_cooldown_elapsed(self.attack_1_countdown) > self.attack_1.get("cooldown"):
                 # self.attack_1     Run

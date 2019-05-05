@@ -26,7 +26,7 @@ class Bot(ABC):  # Root class
         logger.info('Bot is running...')
         enemy_is_alive = False
         enemy_previous_health = -1                 # to check if the enemy actually get damaged
-         
+
         while True:
             try:
                 if self.components:
@@ -56,7 +56,7 @@ class Bot(ABC):  # Root class
                             # if 'normal' then continue
                         else:
                             logger.debug("Player's health is normal...")
-                        
+
                         # check for player's mana status
                         if player_mana_status is 'low':
                             # if 'low' then rest
@@ -102,7 +102,7 @@ class Bot(ABC):  # Root class
                 else:
                     logger.warning('Lost control of the bot...')
                     raise Exception('Could not find neccessary components for bot...')          # TODO: change to specific exception to raise.
-                
+
             except Exception as e:
                 logger.exception(e)
                 logger.warning('Bot is disconnecting...')
@@ -114,7 +114,7 @@ class Bot(ABC):  # Root class
         Inheritable attacking method for subclass (all characters have different move)
         """
         pass
-    
+
     @abstractmethod
     def defend(self):
         """
@@ -130,7 +130,7 @@ class Bot(ABC):  # Root class
         # TODO: Improve on this method  /  If the bot rest during an attack - it might get kill
         rest_time = 2
         time.sleep(rest_time)
-    
+
     def cast(self, skill):
         """
         Casting a skill
@@ -159,7 +159,7 @@ class Bot(ABC):  # Root class
         Send "TAB" as a shortcut to find enemy
         """
         self.action.send_keys(Keys.TAB)
-    
+
     def check_health(self):
         """
         Check player's health. If player's health is less than half of max_health then return 'low' or 'die' if died else 'normal'
@@ -168,7 +168,7 @@ class Bot(ABC):  # Root class
         max_health = int(self.player.get('max_health'))
         if current_health == 0:
             return 'die'
-        
+
         return 'low' if current_health < max_health // 2 else 'normal'
 
     def check_mana(self):
