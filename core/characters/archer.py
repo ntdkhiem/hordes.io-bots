@@ -7,21 +7,21 @@ class Archer(Bot):
             "1": {
                 "key": 2,
                 "name": "Volley",
-                "cooldown": 5,
+                "cooldown": 6,
                 "duration": 3,
             },
             "2": {
                 "key": 1,
                 "name": "Piercing Shot",
                 "cooldown": 0,
-                "duration": 1,
+                "duration": 0,
             }
         },
         "defend": {
             "1": {
                 "key": 3,
                 "name": "Leeching Arrow",
-                "cooldown": 5,
+                "cooldown": 14,
                 "duration": 0,
             }
         }

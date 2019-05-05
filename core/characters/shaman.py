@@ -21,8 +21,8 @@ class Shaman(Bot):
             "1": {
                 "key": 1,
                 "name": "Healing Ritual",
-                "cooldown": 1,
-                "duration": 1,
+                "cooldown": 0,
+                "duration": 0.6,
             }
         }
     }

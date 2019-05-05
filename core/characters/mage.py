@@ -6,28 +6,28 @@ class Mage(Bot):
             "1": {
                 "key": 2,
                 "name": "Frostcall",
-                "cooldown": 4,
+                "cooldown": 7,
                 "duration": 5,
             },
             "2": {
                 "key": 1,
                 "name": "Ice Bolt",
-                "cooldown": 0,
-                "duration": 1,
+                "cooldown": 1,
+                "duration": 0,
             }
         },
         "defend": {
             "1": {
                 "key": 4,
                 "name": "Iceblock",
-                "cooldown": 18,
+                "cooldown": 14,
                 "duration": 5,
             },
             "2": {
                 "key": 3,
                 "name": "Teleport",
                 "cooldown": 9,
-                "duration": 1,
+                "duration": 0,
             }
         }
     }
