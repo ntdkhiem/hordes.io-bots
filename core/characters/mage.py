@@ -8,14 +8,12 @@ class Mage(Bot):
                 "name": "Frostcall",
                 "cooldown": 4,
                 "duration": 5,
-                "MPCost": 22.4
             },
             "2": {
                 "key": 1,
                 "name": "Ice Bolt",
                 "cooldown": 0,
                 "duration": 1,
-                "MPCost": 5.6
             }
         },
         "defend": {
@@ -24,14 +22,12 @@ class Mage(Bot):
                 "name": "Iceblock",
                 "cooldown": 18,
                 "duration": 5,
-                "MPCost": 33.6
             },
             "2": {
                 "key": 3,
                 "name": "Teleport",
                 "cooldown": 9,
                 "duration": 1,
-                "MPCost": 22.4
             }
         }
     }

@@ -9,14 +9,12 @@ class Archer(Bot):
                 "name": "Volley",
                 "cooldown": 5,
                 "duration": 3,
-                "MPCost": 8.8
             },
             "2": {
                 "key": 1,
                 "name": "Piercing Shot",
                 "cooldown": 0,
                 "duration": 1,
-                "MPCost": 2.2
             }
         },
         "defend": {
@@ -25,7 +23,6 @@ class Archer(Bot):
                 "name": "Leeching Arrow",
                 "cooldown": 5,
                 "duration": 0,
-                "MPCost": 33.6
             }
         }
     }

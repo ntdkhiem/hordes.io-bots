@@ -9,14 +9,12 @@ class Shaman(Bot):
                 "name": "Decay",
                 "cooldown": 0,
                 "duration": 1.3,
-                "MPCost": 10.2
             },
             "2": {
                 "key": 2,
                 "name": "Equilibrate",
                 "cooldown": 0,
                 "duration": 1,
-                "MPCost": 20.4
             }
         },
         "defend": {
@@ -25,7 +23,6 @@ class Shaman(Bot):
                 "name": "Healing Ritual",
                 "cooldown": 1,
                 "duration": 1,
-                "MPCost": 8.2
             }
         }
     }
