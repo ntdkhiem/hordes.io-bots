@@ -6,6 +6,8 @@ Automation bot that help grinding without much help from you.
 
 [![Video Demonstration](https://img.youtube.com/vi/xRAFMiTzsn0/0.jpg)](https://youtu.be/xRAFMiTzsn0)
 
+This short video demonstration was created before some updates like (_shaman, archer, warrior supported_ and fixed bugs)
+
 ### Features:
 
 - Attack and defend mode
