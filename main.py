@@ -35,7 +35,6 @@ def choose_character():
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Hordes.io bot configuration")
     parser.add_argument('--browser', '-b', default="chrome", dest="browser", help="Specific a web browser to start (chrome)")
-    # arg.add_argument('--character', '-c', default=1, type=int, help="Amount of character to play at once")
     parser.add_argument('--path', default='', type=str, dest="path", help="Path to chromedriver.exe")
     parser.add_argument('--verbose', '-v', default=False, action='store_true', dest="verbose", help="Display bot's workflow")
     _args = parser.parse_args()
